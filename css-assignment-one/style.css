@@ -1,0 +1,50 @@
+/* Assignment no. 1 - CSS Advanced: 
+    1. - tekst svih linkova koji upućuju na neku od adresa koje pripadaju sajtu Google obojiti u zeleno;
+    2. - tekst linka koji upućuje na LINK group web sajt obojiti u crvenu boju;
+    3. - paragrafe unutar second-div elementa naizmenično obojiti u crvenu i plavu boju (Paragraph 4 crvena, Paragraph 5 plava, Paragraph 6 crvena boja...)
+    4. - na krajeve Paragrafa 2 i Paragrafa 3, korišćenjem CSS-a dodati tekst – NEW, žute boje;
+    5. - prelaskom miša preko Paragraph 10 elementa, njegov tekst treba da postane italic.
+*/
+
+body {
+    margin: 20px;
+}
+
+/* 1. */
+a[href^="https://www.google.com/"] {
+    color: rgb(21, 127, 26);
+}
+
+/* 2. */
+a[target="_blank"] {
+    color: rgb(143, 0, 31);
+}
+
+/* 3. */
+#second-div p:nth-child(2n+2) {
+    color: rgb(143, 0, 31);
+}
+#second-div p:nth-child(2n+1) {
+    color: rgb(31, 64, 114);
+}
+
+/* 4. */
+#first-div > p::after {
+    content: " - NEW";
+    color: rgb(188, 165, 16);
+}
+
+/* 5. */
+p:nth-child(8):hover {
+    font-style: italic;
+    cursor: pointer;
+    font-weight: 500;
+}
+/*
+iste rezultate daje za 5. stavku daje i naredni kod --
+body > p:last-child:hover {
+    font-style: italic;
+    cursor: pointer;
+    font-weight: 500;
+}
+*/
