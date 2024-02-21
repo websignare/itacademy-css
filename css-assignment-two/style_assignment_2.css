@@ -1,0 +1,98 @@
+/* Prikazanu animaciju je potrebno realizovati isključivo korišćenjem HTML i CSS jezika i pri tome koristiti pristupe koji su obrađeni u dosadašnjem toku kursa. Za realizaciju prikazane animacije, potrebno je upotrebiti sledeće pojmove CSS jezika:
+
+linearni gradijenti;
+filteri;
+CSS animacije;
+2D CSS transformacije;
+Pseudoelementi.
+
+Boje koje su korišćene za realizaciju prikazanog primera su:
+
+na krugu - #fb5dad, #55fb9f, #b97aff;
+boja pozadine - #050210.
+
+Obratite pažnju na to da je glow iza animiranog kruga sačinjen iz više boja, koje prate boje kruga. */
+
+body {
+    margin: 0;
+    min-width: 100%;
+    height: 100vh;
+    background-color: #050210;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.glow_circle{
+    border-radius: 50%;
+    height: 450px;
+    width: 450px;
+    border-left: 30px solid #55fb9f;
+    border-top: 30px solid #fb5dad;
+    border-right: 30px solid #55fb9f;
+    border-bottom: 30px solid #b97aff;
+    position: relative;
+    filter: blur(50px);
+    animation-duration: 1s;
+    animation-name: rotate_circle;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.gradient_circle{
+    background: linear-gradient(#fb5dad 0%, #55fb9f 60%, #b97aff 100%);
+    border-radius: 50%;
+    height: 450px;
+    width: 450px;
+    position: absolute;
+    animation-duration: 1s;
+    animation-name: rotate_circle;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.gradient_circle::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background-color: #050210;
+    border-radius: 50%;
+}
+
+@keyframes rotate_circle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pulsate_circle{
+    border-radius: 50%;
+    background-color: #150b39;
+    animation-name: pulsate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    position: absolute;
+}
+
+
+
+@keyframes pulsate {
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    100% {
+        width: 380px;
+        height: 380px;
+        opacity: 0.4;
+    }
+}
